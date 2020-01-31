@@ -106,7 +106,7 @@
         }
         console.log(formData);
         /* only firebase need to add .json */
-        axios.post('https://vuejs2-axios.firebaseio.com/user.json', formData)
+        axios.post('/user.json', formData)
                 // This is the response object created and filled by axios
                 .then(res => console.log(res))
                 .catch(error => console.log(error))
