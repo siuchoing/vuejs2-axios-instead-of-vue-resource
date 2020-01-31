@@ -69,6 +69,8 @@
 </template>
 
 <script>
+  import axios from 'axios';
+
   export default {
     data () {
       return {
@@ -102,7 +104,12 @@
           hobbies: this.hobbyInputs.map(hobby => hobby.value),
           terms: this.terms
         }
-        console.log(formData)
+        console.log(formData);
+        /* only firebase need to add .json */
+        axios.post('https://vuejs2-axios.firebaseio.com/user.json', formData)
+                // This is the response object created and filled by axios
+                .then(res => console.log(res))
+                .catch(error => console.log(error))
       }
     }
   }
