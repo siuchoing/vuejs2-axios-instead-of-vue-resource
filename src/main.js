@@ -8,7 +8,7 @@ import store from './store'
 // Global Request Configuration
 axios.defaults.baseURL = 'https://vuejs2-axios.firebaseio.com/'   // Reference by https://github.com/axios/axios
 // Can check in Network console > Header
-axios.defaults.headers.common['Authorization'] = 'admin'
+// axios.defaults.headers.common['Authorization'] = 'admin'
 axios.defaults.headers.get['Accepts'] = 'application/json'
 
 // Use local function to return config request, otherwise it will block the request

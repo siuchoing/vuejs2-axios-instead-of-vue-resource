@@ -106,13 +106,18 @@
         }
         console.log(formData);
         /* only firebase need to add .json */
-        axios.post('/user.json', formData)
+        axios.post(':signUp?key=AIzaSyAhVooPtSTblKYra9qMuCOIsMGLjTXUbms', {
+          email: formData.email,
+          password: formData.password,
+          returnSecureToken: true
+        })
                 // This is the response object created and filled by axios
                 .then(res => console.log(res))
                 .catch(error => console.log(error))
       }
     }
   }
+
 </script>
 
 <style scoped>
