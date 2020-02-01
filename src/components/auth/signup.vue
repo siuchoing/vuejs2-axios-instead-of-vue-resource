@@ -69,8 +69,6 @@
 </template>
 
 <script>
-  import axios from '../../axios-auth';
-
   export default {
     data () {
       return {
@@ -105,15 +103,10 @@
           terms: this.terms
         }
         console.log(formData);
-        /* only firebase need to add .json */
-        axios.post(':signUp?key=AIzaSyAhVooPtSTblKYra9qMuCOIsMGLjTXUbms', {
+        this.$store.dispatch('signup', {
           email: formData.email,
-          password: formData.password,
-          returnSecureToken: true
+          password: formData.password
         })
-                // This is the response object created and filled by axios
-                .then(res => console.log(res))
-                .catch(error => console.log(error))
       }
     }
   }
