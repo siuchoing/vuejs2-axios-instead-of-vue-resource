@@ -10,10 +10,15 @@ export default new Vuex.Store({
     userId: null
   },
   mutations: {
+    // change the state to store Auth Data in Vuex
+    authUser (state, userData) {
+      state.idToken = userData.token
+      state.userId = userData.userId
+    }
 
   },
   actions: {
-    // Sending Auth requests by vuex
+    // Sending payload object for Auth requests by vuex
     signup ({commit}, authData) {
       axios.post(':signUp?key=AIzaSyAhVooPtSTblKYra9qMuCOIsMGLjTXUbms', {
         email: authData.email,
@@ -21,7 +26,13 @@ export default new Vuex.Store({
         returnSecureToken: true
       })
       // This is the response object created and filled by axios
-          .then(res => console.log(res))
+          .then(res => {
+            console.log(res)
+            commit('authUser', {
+              token: res.data.idToken,
+              userId: res.data.localId
+            })
+          })
           .catch(error => console.log(error))
     },
     login ({commit}, authData) {
@@ -31,7 +42,13 @@ export default new Vuex.Store({
         returnSecureToken: true
       })
       // This is the response object created and filled by axios
-          .then(res => console.log(res))
+          .then(res => {
+            console.log(res)
+            commit('authUser', {
+              token: res.data.idToken,
+              userId: res.data.localId
+            })
+          })
           .catch(error => console.log(error))
     }
   },
